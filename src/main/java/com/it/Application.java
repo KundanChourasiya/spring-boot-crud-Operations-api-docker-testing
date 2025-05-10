@@ -20,7 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 				)
 		),
 		servers = @Server(
-				url = "http://${BASE_URL}:${SERVER_PORT}",
+				url = "http://${BASE_URL:localhost}:${SERVER_PORT:8080}",
 				description = "Crud Operations with custom Api Response url"
 		)
 )
