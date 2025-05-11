@@ -1,6 +1,20 @@
 version: "3.8"
 
 services:
+
+  nginx:
+    container_name: nginx_cont
+    build:
+      context: ./nginx
+    image: nginx
+    ports:
+      - "80:80"
+    networks:
+      - api-network
+    restart: always
+    depends_on:
+      - crud-api
+
   mysql:
     image: mysql:latest
     container_name: mysql
@@ -21,15 +35,11 @@ services:
       start_period: 30s
     restart: always
 
-  curd-api:
+  crud-api:
     build: .
     container_name: crud-api-v1
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3306
-      - MYSQL_DB = crudapi
-      - MYSQL_USER= root
-      - MYSQL_PASSWORD=test
+    env_file:
+      - ".env"
     ports:
       - "8080:8080"
     networks:
@@ -37,7 +47,7 @@ services:
     depends_on:
       - mysql
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000 || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8080 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5

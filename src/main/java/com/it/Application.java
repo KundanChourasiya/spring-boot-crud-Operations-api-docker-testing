@@ -3,7 +3,6 @@ package com.it;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,10 +17,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 						name = "Kundan Kumar Chourasiya",
 						email = "mailmekundanchourasiya@gmail.com"
 				)
-		),
-		servers = @Server(
-				url = "http://${BASE_URL:localhost}:${SERVER_PORT:8080}",
-				description = "Crud Operations with custom Api Response url"
 		)
 )
 public class Application {
