@@ -115,13 +115,12 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 ```properties
 server {
-    listen 80;
-        #(xyz.com)
-    server_name localhost;
-    #server_name xyz.com;
+
+    listen 80;          # Nginx server default port
+    server_name localhost;      # DNS server name (www.abc.com)
 
     location / {
-        proxy_pass http://crud-api:8080;
+        proxy_pass http://crud-api:8080;        # running host and post no
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
