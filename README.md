@@ -111,7 +111,7 @@ FROM nginx:1.23.3-alpine
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 ```
 
-### default.config (Ngnix config)
+### default.conf (Ngnix config)
 
 ```properties
 server {
